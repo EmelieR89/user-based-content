@@ -1,10 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const userModel = require('../models/userModel')
 
-// mongoose.connect("mongodb://localhost:27017/exercise", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
 const router = express.Router();
 
 const users = [
