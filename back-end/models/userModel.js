@@ -5,4 +5,4 @@ let userSchema = mongoose.Schema({
   password: String,
 });
 
-module.exports = mongoose.model('users', userSchema)
+module.exports = mongoose.model("Users", userSchema);
