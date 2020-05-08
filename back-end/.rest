@@ -2,8 +2,11 @@ POST http://localhost:3000/
 
 ###
 
-GET http://localhost:4000/api/users/5eb441fe55421805488aa40c
+GET http://localhost:4000/api/users
 
+###
+
+GET http://localhost:4000/api/users/5eb5179e7e97681e0c2f3f38
 
 ###
 
@@ -11,8 +14,8 @@ POST http://localhost:4000/api/users
 Content-Type: application/json
 
 {
-    "name": "Henke",
-    "password": "Skurk"
+    "name": "Emelie",
+    "password": "Hej"
 }
 
 
