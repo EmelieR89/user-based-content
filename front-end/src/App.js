@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
+import MainContent from "./MainContent.js";
+import Header from "./Header.js"
 
 function App() {
  const [data, setData] = useState([]);
+
+ 
 
 /* const [recipes, setRecipe] = useState([]);
  */
@@ -26,15 +30,15 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <button onClick={() => getRecipes()}>tryck här!</button>
+      <Header />
+      <MainContent />
+      <button onClick={() => getRecipes()}>tryck här!</button>
         {data.map((x, i) => (
           <div key={i}>
             <h4>{x.title}</h4>
             <p>{x.content}</p>
           </div>
         ))}
-      </header>
     </div>
   );
 }
