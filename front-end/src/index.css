@@ -5,9 +5,48 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #02C39A;
+  font-family: "Poppins", sans-serif;
+  color: #F0F3BD;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root .App{
+  height: 100vh;
+/*   background-color: #028090; Bara för att spara denna färgen
+ */}
+
+.mainDiv {
+  padding: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 12vh;
+  background-color: #00A896;
+  padding: 1rem;
+}
+
+button {
+  border: none;
+  border-radius: 1rem;
+  background-color: #05668D;
+  color: #F0F3BD;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.loginDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: ;
+}
+
+.loginDiv input{
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+
 }
