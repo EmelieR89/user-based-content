@@ -30,7 +30,18 @@ router.post("/api/users", async function (req, res, next) {
   const user = req.body;
   const userDoc = await new UserModel(user);
   const savedUserDoc = await userDoc.save();
-  res.send(JSON.stringify(savedUserDoc));
+  res.status(200).json(savedUserDoc); //send(JSON.stringify(savedUserDoc));
+});
+
+//DELETE user by id
+router.delete("/api/users/:userId", async function (req, res, next) {
+  const id = req.params.userId;
+  try {
+    const res = await UserModel.findByIdAndDelete(id);
+    res.status(200).send("Has been deleted");
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 module.exports = router;

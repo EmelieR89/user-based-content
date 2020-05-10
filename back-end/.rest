@@ -18,4 +18,43 @@ Content-Type: application/json
     "password": "Hej"
 }
 
+###
 
+DELETE http://localhost:4000/api/users/5eb5179e7e97681e0c2f3f38
+
+
+###
+
+GET http://localhost:4000/api/recipes/5eb81b79d230551ec0e76318
+
+###
+
+POST http://localhost:4000/api/recipes
+Content-Type: application/json
+
+{
+    "title": "Gott med grönt",
+    "content": "Denna smoothie innehåller mängder med antioxidanter och järn! Allt som man kan behöva i dessa tider. ",
+    "postDate": "5 juni"
+}
+
+###
+
+GET http://localhost:4000/api/recipes
+
+###
+
+DELETE http://localhost:4000/api/recipes/5eb81b79d230551ec0e76318
+
+###
+
+PUT  http://localhost:4000/api/recipes/5eb827c2ca149b1320cb2f48
+Content-Type: application/json
+
+{
+    "_id": "5eb827c2ca149b1320cb2f48",
+    "title": "Grönt är skönt",
+    "content": "Denna smoothie innehåller mängder med antioxidanter och järn! Allt som man kan behöva i dessa tider. ",
+    "postDate": "12 juni",
+    "__v": 0
+}
