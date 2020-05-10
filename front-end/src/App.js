@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
+import MainContent from "./components/MainContent.js";
+import Header from "./components/Header.js"
+import LoginPage from "./components/LoginPage"
+import CreateUserPage from "./components/CreateUserPage"
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+
 
 function App() {
   const [data, setData] = useState([]);
 
-  /* const [recipes, setRecipe] = useState([]);
-   */
+ 
+
+/* const [recipes, setRecipe] = useState([]);
+ */
 
   const getStuff = async () => {
     await fetch("http://localhost:4000/api/users")
@@ -24,17 +32,26 @@ function App() {
   // };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <button onClick={() => getStuff()}>tryck här!</button>
+    <BrowserRouter>
+       <div className="App">
+      <Header />
+      <button onClick={() => getStuff()}>tryck här!</button>
         {data.map((x, i) => (
           <div key={i}>
             <h4>{x.name}</h4>
             <p>{x.password}</p>
           </div>
         ))}
-      </header>
+        <Switch>
+          <Route exact path="/">
+      <MainContent />
+      </Route>
+      <Route path="/login" component={LoginPage} />
+      <Route path="/createuser" component={CreateUserPage} />
+      </Switch>
     </div>
+    </BrowserRouter>
+
   );
 }
 
