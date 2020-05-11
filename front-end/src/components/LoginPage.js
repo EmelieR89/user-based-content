@@ -1,9 +1,22 @@
 import React, { useState } from "react"
+import { Redirect } from "react-router-dom"
+
 
 export default function LoginPage() {
   // const [data, setData] = useState([])
   let [userName, setUserName] = useState([])
   let [userPassword, setUserPassword] = useState([])
+  let [goToUserPage, setGoToUserPage] = useState(false)
+
+
+  function redirectToUserPage() {
+    setGoToUserPage(true)
+  }
+
+  if(goToUserPage) {
+    return <Redirect to="/userpage" />
+  }
+
 
   function userAuthorization(){
     console.log(userName, userPassword + "namn och lösen");
@@ -25,6 +38,7 @@ export default function LoginPage() {
       .then((response) => {
         if(response.status === 200) {
           console.log("du är inloggad");
+          redirectToUserPage()
         }
         
         if(response.status === 401) {
