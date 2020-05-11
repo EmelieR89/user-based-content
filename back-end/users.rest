@@ -1,0 +1,43 @@
+
+POST http://localhost:4000/api/users/signup
+Content-Type: application/json
+
+{
+    "name": "Elin10",
+    "password": "1234"
+}
+
+###
+
+POST http://localhost:4000/api/users/login
+Content-Type: application/json
+
+{
+    "name": "Elin10",
+    "password": "1234"
+}
+
+###
+
+GET http://localhost:4000/api/users
+
+###
+
+GET http://localhost:4000/api/users/5eb5179e7e97681e0c2f3f38
+
+###
+
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+    "name": "Emelie",
+    "password": "Hej"
+}
+
+###
+
+DELETE http://localhost:4000/api/users/5eb5179e7e97681e0c2f3f38
+
+
+###
