@@ -88,6 +88,8 @@ router.post("/api/users/signup", async (req, res, next) => {
 
 // POST sign in
 router.post("/api/users/login", async (req, res, next) => {
+  console.log(req.body);
+  
   await UserModel.find({ name: req.body.name })
     .exec()
     .then((user) => {
@@ -120,6 +122,7 @@ router.post("/api/users/login", async (req, res, next) => {
     });
 });
 
+// Delete user
 router.delete("/api/users/:userId", async function (req, res, next) {
   const id = req.params.userId;
   await UserModel.deleteOne({ _id: id })
