@@ -17,6 +17,16 @@ body {
 
 .mainDiv {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipeDiv {
+  border: 1px solid black;
+  padding: 0.5rem;
+  max-width: 30rem;
 }
 
 header {
@@ -41,7 +51,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ;
 }
 
 .loginDiv input{
@@ -49,4 +58,17 @@ button {
   padding: 0.5rem;
   border-radius: 1rem;
 
+}
+
+.recipeform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.recipeform input, textarea {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
 }

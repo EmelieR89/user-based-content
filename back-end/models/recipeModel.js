@@ -6,7 +6,8 @@ let recipeSchema = mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "Users",
   },
-  content: String,
+  ingredients: String,
+  howTo: String,
   postDate: String,
 });
 
