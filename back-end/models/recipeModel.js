@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 
 let recipeSchema = mongoose.Schema({
   title: String,
-  createdBy: String,
+  createdBy: {
+    type: mongoose.Types.ObjectId,
+    ref: "Users",
+  },
   content: String,
   postDate: String,
 });
