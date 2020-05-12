@@ -24,18 +24,43 @@ export default function UserPage() {
       })}
 
 
+  function deleteRecipes(id){
+    fetch("http://localhost:4000/api/recipes/:recipeId" + id, {
+      method: "DELETE",
+      headers: {      
+        'Content-Type': 'application/json'    
+      },
+      body: JSON.stringify()
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log("Has been deleted");
+      }
+      if (response.status === 500) {
+        console.log("det gick inte");
+    }
+  })
+}
+
   return ( 
-  <div>
-    <button onClick={getRecipes}>Hämta alla recept</button>
+    <div>
+        <button onClick={getRecipes}>Hämta alla recept</button>
     <button onClick={redirectToRecipeForm}>Skapa nytt recept</button>
+      <div className="userPage">
         {recipes.map((x, i) => (
-          <div key={i}>
+          <div className="recipeBoxStyle"  key={i} >
             <h4>{x.title}</h4>
-            <ul>
-              {x.ingredients}
-            </ul>
-        <div>{x.howTo}</div>
+              <ul>
+              <li>{x.ingredients}</li>
+              </ul>
+              <span>{x.howTo}</span>
+              <div className="deleteAndChangeButtons"> 
+                <button>Ändra</button>
+                <button onClick={() => deleteRecipes()}>Radera</button>
+              </div>
+             
           </div>
         ))}
+        </div>
   </div>)
+  
 }

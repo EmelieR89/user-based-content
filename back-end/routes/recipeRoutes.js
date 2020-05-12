@@ -62,12 +62,19 @@ router.put("/api/recipes/:recipeId", async function (req, res, next) {
 //DELETE recipe by id
 router.delete("/api/recipes/:recipeId", async function (req, res, next) {
   const id = req.params.recipeId;
-  try {
-    const res = await RecipeModel.findByIdAndDelete(id);
-    res.status(200).send("Has been deleted");
-  } catch (error) {
-    res.status(400).send(error);
-  }
+  await RecipeModel.deleteOne({ _id: id })
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        message: "recipe deleted",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
 });
 
 module.exports = router;
