@@ -26,14 +26,6 @@ router.get("/api/users/:userId", async function (req, res) {
   }
 });
 
-// POST new user
-router.post("/api/users", async function (req, res, next) {
-  const user = req.body;
-  const userDoc = await new UserModel(user);
-  const savedUserDoc = await userDoc.save();
-  res.status(200).json(savedUserDoc); //send(JSON.stringify(savedUserDoc));
-});
-
 // //DELETE user by id
 // router.delete("/api/users/:userId", async function (req, res, next) {
 //   const id = req.params.userId;
@@ -89,7 +81,7 @@ router.post("/api/users/signup", async (req, res, next) => {
 // POST sign in
 router.post("/api/users/login", async (req, res, next) => {
   console.log(req.body);
-  
+
   await UserModel.find({ name: req.body.name })
     .exec()
     .then((user) => {

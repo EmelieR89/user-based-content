@@ -1,44 +1,18 @@
-import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
+import React, { useState } from "react";
+import { Redirect, useHistory, Link } from "react-router-dom";
 
 export default function Header() {
-
-  const [goToLoginPage, setGoToLogin] = useState(false)
-  const [goToCreatePage, setGoToCreate] = useState(false)
-  const [goToStartPage, setGoToStartPage] = useState(false)
-
-  function goToStart() {
-    setGoToStartPage(true)
-  }
-
-  if(goToStartPage) {
-    return <Redirect to="/" />
-  }
-
-  function login() {
-    setGoToLogin(true)
-  }
-
-
-  if(goToLoginPage) {
-    return <Redirect to="/login" />
-  }
-
-  function createUser() {
-    setGoToCreate(true)
-  }
-  if(goToCreatePage) {
-    return <Redirect to="/createuser" />
-  }
+  const history = useHistory();
 
   return (
     <header className="App-header">
-       <h1 onClick={goToStart}>HerbaScript</h1>
-       <div className="loginDiv">
-         <button onClick={login}>Login</button>
-         <button onClick={createUser}>New user</button>
-
-       </div>
-      </header>
-  )
+      <h1 onClick={() => history.push("/")}>HerbaScript</h1>
+      <div className="loginDiv">
+        <button onClick={() => history.push("/login")}>Login</button>
+        <Link to="/createuser">
+          <button>New user</button>
+        </Link>
+      </div>
+    </header>
+  );
 }
