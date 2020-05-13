@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function LoginPage() {

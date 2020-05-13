@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function UserPage() {
@@ -9,14 +9,9 @@ export default function UserPage() {
   const history = useHistory();
 
   const [recipes, setRecipe] = useState([]);
-  let [goToRecipeForm, setGoToRecipeForm] = useState(false);
 
   function redirectToRecipeForm() {
-    setGoToRecipeForm(true);
-  }
-
-  if (goToRecipeForm) {
-    return <Redirect to="/recipeform" />;
+    history.push("/recipeform")
   }
 
   function getRecipes() {
@@ -42,7 +37,7 @@ export default function UserPage() {
     });
   }
 
-  function changeRecipe() {
+ function changeRecipe(_id) {
     history.push("/changerecipe");
   }
 
@@ -59,7 +54,7 @@ export default function UserPage() {
             </ul>
             <span>{x.howTo}</span>
             <div className="deleteAndChangeButtons">
-              <button onClick={changeRecipe}>Ändra</button>
+              <button onClick={() => {changeRecipe(x._id)}}>Ändra</button>
               <button
                 onClick={() => {
                   deleteRecipe(x._id);
