@@ -18,12 +18,12 @@ export default function MainContent() {
   return (
     <div className="mainDiv">
       {recipes.map((x, i) => (
-        <div className="recipeDiv" key={i}>
+        <div className="recipeMainDiv" key={i}>
           <h4>{x.title}</h4>
           <ul>{x.ingredients}</ul>
           <div>{x.howTo}</div>
         </div>
       ))}
     </div>
-  );
+  )
 }

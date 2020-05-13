@@ -12,6 +12,9 @@ body {
 
 #root .App {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /*   background-color: #028090; Bara för att spara denna färgen
  */
 }
@@ -19,15 +22,27 @@ body {
 .mainDiv {
   padding: 1rem;
   display: grid;
-  grid-template-areas: "recipeDiv recipeDiv recipeDiv recipeDiv";
+  grid-template-areas: "recipeDiv recipeDiv";
   grid-template-rows: auto;
   grid-template-columns: auto;
   grid-gap: 1rem;
 }
 
-.recipeDiv {
+.recipeDiv input{
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  max-width: 30rem;
+}
+
+.recipeMainDiv {
+  display: flex;
+  flex-direction: column;
   border: 2px solid black;
   padding: 0.5rem;
+  margin: 0.5rem;
   max-width: 30rem;
 }
 
@@ -36,6 +51,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 12vh;
+  width: 100vw;
   background-color: #00a896;
   padding: 1rem;
 }
@@ -89,15 +105,16 @@ textarea {
   align-items: center;
 }
 
+.stylethisdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .userPage {
   padding: 1rem;
   display: grid;
-  grid-template-areas: "recipeBoxStyle recipeBoxStyle recipeBoxStyle recipeBoxStyle";
-  grid-template-rows: auto;
-  grid-template-columns: auto;
+  grid-template-areas: "recipeBoxStyle recipeBoxStyle";
   grid-gap: 1rem;
-}
-
-.deleteAndChangeButtons{
-  display: flex;
 }
