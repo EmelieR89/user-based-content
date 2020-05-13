@@ -1,3 +1,27 @@
+## User based content - HerbaScript
+Av: Elin Alm, Emelie Rosenlöw och Isabel Blomström
+
+Länk till GitHub-repo: https://github.com/EmelieR89/user-based-content
+
+## Appen HerbaScript
+
+Vi har i vår kurs Dynamisk Webbutveckling fått i uppdrag att skapa en användarbaserad plattform, där användaren har möjlighet att registrera sig, logga in samt skapa innehåll. Appen behandlar både front-end och back-end. Vi har valt att skapa en plattform för veganska recept. Namnet HerbaScript kommer från det latinska ordet för gräs - "herba", och ordet för skrift. Användare som är registrerade ska kunna logga in och se samt redigera eller ta bort sina egna recept. Användare som inte är inloggade ska kunna se alla recept som finns i databasen. 
+
+## Hur vi byggt projektet
+
+Vi har i detta projekt valt att arbeta med React för att lättare kunna sätta upp front-endsidan. Vi har även använt oss av Express och Mongoose. För att sätta upp projektet från start skriver vi ``npm init``, detta ger oss package.json-filen. Därefter installerar vi våra dependencies genom att skriva ``npm i express mongoose``. För att köra projektet startar vi servern med ``node server.js`` eller använder oss utav nodemon. I det senare fallet blir det ``nodemon server.js``.
+
+## Hur du kör projektet 
+
+För att köra projektet, kör först npm install i din terminal: 
+``npm install``
+Servern ligger på [http://localhost:4000]. För att köra igång servern, kör 
+``node server.js``
+Front enden ligger på [http://localhost:3000] För att köra igång localhost, kör 
+``npm start``
+
+------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
