@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect, useHistory, Link } from "react-router-dom";
 
 export default function Header() {
   const history = useHistory();

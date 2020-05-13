@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react"
-import {UserPage} from "./UserPage"
 
 export default function ChangeRecipe(){
     const [recipes, setRecipe] = useState([]);
