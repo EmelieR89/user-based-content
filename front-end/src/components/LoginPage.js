@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 export default function LoginPage() {
-  // const [data, setData] = useState([])
+  const { userData, setName, setId } = useContext(UserContext);
+
   const [userName, setUserName] = useState([]);
   const [userPassword, setUserPassword] = useState([]);
   const history = useHistory();
@@ -19,17 +21,17 @@ export default function LoginPage() {
       password: userPassword,
     };
 
-    console.log(user);
-
     fetch("http://localhost:4000/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    }).then((response) => {
+    }).then(async (response) => {
       if (response.status === 200) {
-        console.log("du är inloggad");
+        let dataFromBackend = await response.json();
+        console.log(dataFromBackend);
+        setId(dataFromBackend.userId);
         redirectToUserPage();
       }
 
@@ -37,11 +39,6 @@ export default function LoginPage() {
         console.log("du får inte vara med");
       }
     });
-    // // .then((response) => response.json())
-
-    // // .then((data) => {
-    // //   setData(data);
-    // });
   }
 
   return (

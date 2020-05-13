@@ -1,72 +1,76 @@
-import React from "react"
-import { useState } from "react"
+import React from "react";
+import { useState, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 export default function UserPage() {
+  const { userData } = useContext(UserContext);
 
   const history = useHistory();
 
   const [recipes, setRecipe] = useState([]);
-  let [goToRecipeForm, setGoToRecipeForm] = useState(false)
-
+  let [goToRecipeForm, setGoToRecipeForm] = useState(false);
 
   function redirectToRecipeForm() {
-    setGoToRecipeForm(true)
+    setGoToRecipeForm(true);
   }
 
-  if(goToRecipeForm) {
-    return <Redirect to="/recipeform" />
+  if (goToRecipeForm) {
+    return <Redirect to="/recipeform" />;
   }
 
   function getRecipes() {
-      fetch("http://localhost:4000/api/recipes")
+    fetch("http://localhost:4000/api/recipes/" + userData.id)
       .then((response) => response.json())
       .then((recipes) => {
+        console.log("Förhopningsvis massa recept : ", recipes);
         setRecipe(recipes);
-      })}
-
-
-    function deleteRecipe (id)  {
-
-      fetch("http://localhost:4000/api/recipes/" + id, {
-        method: "DELETE",
-      })
-      .then((response) => {
-        if(response.status === 200) {
-          console.log("deleted"); 
-          getRecipes() 
-        } if(response.status === 500) {
-          console.log("funkar inte");
-          
-        }
       });
-    }
-  
+  }
 
-function changeRecipe(){
-  history.push("/changerecipe");
-}
+  function deleteRecipe(id) {
+    fetch("http://localhost:4000/api/recipes/" + id, {
+      method: "DELETE",
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log("deleted");
+        getRecipes();
+      }
+      if (response.status === 500) {
+        console.log("funkar inte");
+      }
+    });
+  }
 
-  return ( 
+  function changeRecipe() {
+    history.push("/changerecipe");
+  }
+
+  return (
     <div>
-        <button onClick={getRecipes}>Hämta alla recept</button>
-    <button onClick={redirectToRecipeForm}>Skapa nytt recept</button>
+      <button onClick={getRecipes}>Hämta alla recept</button>
+      <button onClick={redirectToRecipeForm}>Skapa nytt recept</button>
       <div className="userPage">
         {recipes.map((x, i) => (
-          <div className="recipeBoxStyle"  key={i} >
+          <div className="recipeBoxStyle" key={i}>
             <h4>{x.title}</h4>
-              <ul>
+            <ul>
               <li>{x.ingredients}</li>
-              </ul>
-              <span>{x.howTo}</span>
-              <div className="deleteAndChangeButtons"> 
-                <button onClick={changeRecipe}>Ändra</button>
-                <button onClick={() => {deleteRecipe(x._id)}}>Radera</button>
-              </div>
-             
+            </ul>
+            <span>{x.howTo}</span>
+            <div className="deleteAndChangeButtons">
+              <button onClick={changeRecipe}>Ändra</button>
+              <button
+                onClick={() => {
+                  deleteRecipe(x._id);
+                }}
+              >
+                Radera
+              </button>
+            </div>
           </div>
         ))}
-        </div>
-  </div>)
-  
+      </div>
+    </div>
+  );
 }

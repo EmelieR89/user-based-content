@@ -15,16 +15,25 @@ router.get("/api/users", async function (req, res) {
 });
 
 // GET user with id
-router.get("/api/users/:userId", async function (req, res) {
-  const id = req.params.userId;
-  try {
-    const userIdDoc = await UserModel.findById(id);
-    console.log(userIdDoc, "Här är vi");
-    res.status(200).json(userIdDoc);
-  } catch (error) {
-    res.status(400).send("Something went wrong. Message:", error);
-  }
-});
+// router.get("/api/users/:userId", async function (req, res) {
+//   const id = req.params.userId;
+//   console.log("användar id : ", id);
+//   try {
+//     const userIdDoc = await UserModel.findById(id)
+//       .populate("recipes")
+//       .exec(function (err, user) {
+//         if (err) {
+//           console.log("FAIL:", err);
+//         }
+//         console.log("undefined?", user);
+//         return user;
+//       });
+//     console.log("användare med recept : ",  userIdDoc);
+//     res.status(200).json( userIdDoc);
+//   } catch (error) {
+//     res.status(400).send("Something went wrong. Message:");
+//   }
+// });
 
 // //DELETE user by id
 // router.delete("/api/users/:userId", async function (req, res, next) {
@@ -61,13 +70,13 @@ router.post("/api/users/signup", async (req, res, next) => {
             await user
               .save()
               .then((result) => {
-                console.log(result);
+                // console.log(result);
                 res.status(201).json({
                   message: "User created",
                 });
               })
               .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 res.status(500).json({
                   error: err,
                 });
@@ -80,7 +89,7 @@ router.post("/api/users/signup", async (req, res, next) => {
 
 // POST sign in
 router.post("/api/users/login", async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   await UserModel.find({ name: req.body.name })
     .exec()
@@ -97,8 +106,10 @@ router.post("/api/users/login", async (req, res, next) => {
           });
         }
         if (result) {
+          // console.log(user, "Här är result");
           return res.status(200).json({
             message: "Auth successful",
+            userId: user[0]._id,
           });
         }
         res.status(401).json({
@@ -107,7 +118,7 @@ router.post("/api/users/login", async (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({
         error: err,
       });
@@ -125,7 +136,7 @@ router.delete("/api/users/:userId", async function (req, res, next) {
       });
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({
         error: err,
       });
