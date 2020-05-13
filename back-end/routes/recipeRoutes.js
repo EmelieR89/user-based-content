@@ -13,14 +13,14 @@ router.get("/api/recipes", async function (req, res) {
   }
 });
 
-
 router.get("/api/recipes/recipe/:recipeId", async function (req, res) {
   const id = req.params.recipeId;
+  console.log(id, "här är id i backend");
   try {
-    const recipeIdDoc = await RecipeModel.findById(id);
-    res.status(200).json(recipeIdDoc);
+    const recipeWeEdit = await RecipeModel.findById(id);
+    res.status(200).json(recipeWeEdit);
   } catch (error) {
-    res.status(400).send("Something went wrong. Message:", error);
+    res.status(400).send("Something went wrong. Message:"); //error);
   }
 });
 
@@ -72,7 +72,7 @@ router.delete("/api/recipes/:recipeId", async function (req, res, next) {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "recipe deleted", 
+        message: "recipe deleted",
       });
     })
     .catch((err) => {
