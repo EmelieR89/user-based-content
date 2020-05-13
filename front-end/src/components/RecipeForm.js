@@ -31,14 +31,16 @@ export default function RecipeForm() {
   }
 
   function addIngredients(){
-
+    
   }
 
 
   return (
     <div className="recipeform">
       <input type="text" placeholder="title" onChange={event => setRecipeTitle(event.target.value)}></input>
-      <input type="text" placeholder="ingredienser" onChange={event => setIngredients(event.target.value)}></input>
+      <div onChange={event => setIngredients(event.target.value)}>
+        <input type="text" placeholder="ingredienser"></input>
+      </div>
       <button onClick={addIngredients}>Lägg till ingrediens</button>
       <textarea rows="10" columns="10" placeholder="Hur" onChange={event => setHowTo(event.target.value)}></textarea>
       <button onClick={createRecipe}>Skapa recept</button>
