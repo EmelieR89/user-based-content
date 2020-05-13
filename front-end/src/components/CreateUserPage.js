@@ -16,7 +16,7 @@ export default function CreateUser() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
-    }).then((response) => {
+    }).then( (response) => {
       if (response.status === 409) {
         alert("Användarnamnet är upptaget. Försök igen.");
       }
@@ -30,7 +30,7 @@ export default function CreateUser() {
   }
 
   return (
-    <form className="loginDiv">
+    <div className="loginDiv">
       <input
         onChange={(event) => setUserName(event.target.value)}
         type="text"
@@ -44,6 +44,6 @@ export default function CreateUser() {
         placeholder="Lösenord"
       ></input>
       <button onClick={createNewUser}>Skapa användare</button>
-    </form>
+    </div>
   );
 }

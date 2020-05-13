@@ -42,8 +42,11 @@ export default function UserPage() {
     });
   }
 
-  function changeRecipe() {
-    history.push("/changerecipe");
+  function changeRecipe(id) {  
+    history.push({
+      pathname: "/changerecipe",
+      id: id,
+    });
   }
 
   return (
@@ -59,7 +62,7 @@ export default function UserPage() {
             </ul>
             <span>{x.howTo}</span>
             <div className="deleteAndChangeButtons">
-              <button onClick={changeRecipe}>Ändra</button>
+              <button  onClick={() => {changeRecipe(x._id)}}>Ändra</button>
               <button
                 onClick={() => {
                   deleteRecipe(x._id);

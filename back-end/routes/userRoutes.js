@@ -48,10 +48,12 @@ router.get("/api/users", async function (req, res) {
 
 // POST signup
 router.post("/api/users/signup", async (req, res, next) => {
-  await UserModel.find({ name: req.body.name })
+  console.log("nu är vi i signup");
+  await UserModel.find({ name: req.body.name })  
     .exec()
     .then((user) => {
       if (user.length >= 1) {
+        console.log("användaren fanns");
         return res.status(409).json({
           message: "name already exists",
         });
@@ -62,6 +64,8 @@ router.post("/api/users/signup", async (req, res, next) => {
               error: err,
             });
           } else {
+            console.log("nu skapas en ny användare");
+            
             const user = new UserModel({
               _id: new mongoose.Types.ObjectId(),
               name: req.body.name,
@@ -70,13 +74,13 @@ router.post("/api/users/signup", async (req, res, next) => {
             await user
               .save()
               .then((result) => {
-                // console.log(result);
-                res.status(201).json({
+                console.log(result);
+                res.status(201).json({  
                   message: "User created",
                 });
               })
               .catch((err) => {
-                // console.log(err);
+                console.log(err);
                 res.status(500).json({
                   error: err,
                 });
