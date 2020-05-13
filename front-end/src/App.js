@@ -7,6 +7,7 @@ import CreateUserPage from "./components/CreateUserPage";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import UserPage from "./components/UserPage";
 import RecipeForm from "./components/RecipeForm";
+import ChangeRecipe from "./components/ChangeRecipe";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/createuser" component={CreateUserPage} />
         <Route path="/userpage" component={UserPage} />
         <Route path="/recipeform" component={RecipeForm} />
+        <Route path="/changerecipe" component={ChangeRecipe}/>
       </Switch>
     </div>
   );

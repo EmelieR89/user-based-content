@@ -1,8 +1,10 @@
 import React from "react"
 import { useState } from "react"
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 export default function UserPage() {
+
+  const history = useHistory();
 
   const [recipes, setRecipe] = useState([]);
   let [goToRecipeForm, setGoToRecipeForm] = useState(false)
@@ -24,21 +26,25 @@ export default function UserPage() {
       })}
 
 
-  function deleteRecipes(id){
-    fetch("http://localhost:4000/api/recipes/:recipeId" + id, {
-      method: "DELETE",
-      headers: {      
-        'Content-Type': 'application/json'    
-      },
-      body: JSON.stringify()
-    }).then((response) => {
-      if (response.status === 200) {
-        console.log("Has been deleted");
-      }
-      if (response.status === 500) {
-        console.log("det gick inte");
+    function deleteRecipe (id)  {
+
+      fetch("http://localhost:4000/api/recipes/" + id, {
+        method: "DELETE",
+      })
+      .then((response) => {
+        if(response.status === 200) {
+          console.log("deleted"); 
+          getRecipes() 
+        } if(response.status === 500) {
+          console.log("funkar inte");
+          
+        }
+      });
     }
-  })
+  
+
+function changeRecipe(){
+  history.push("/changerecipe");
 }
 
   return ( 
@@ -54,8 +60,8 @@ export default function UserPage() {
               </ul>
               <span>{x.howTo}</span>
               <div className="deleteAndChangeButtons"> 
-                <button>Ändra</button>
-                <button onClick={() => deleteRecipes()}>Radera</button>
+                <button onClick={changeRecipe}>Ändra</button>
+                <button onClick={() => {deleteRecipe(x._id)}}>Radera</button>
               </div>
              
           </div>
