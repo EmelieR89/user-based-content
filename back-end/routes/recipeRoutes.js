@@ -13,16 +13,16 @@ router.get("/api/recipes", async function (req, res) {
   }
 });
 
-// GET recipe with id
-// router.get("/api/recipes/:recipeId", async function (req, res) {
-//   const id = req.params.recipeId;
-//   try {
-//     const recipeIdDoc = await RecipeModel.findById(id);
-//     res.status(200).json(recipeIdDoc);
-//   } catch (error) {
-//     res.status(400).send("Something went wrong. Message:", error);
-//   }
-// });
+
+router.get("/api/recipes/recipe/:recipeId", async function (req, res) {
+  const id = req.params.recipeId;
+  try {
+    const recipeIdDoc = await RecipeModel.findById(id);
+    res.status(200).json(recipeIdDoc);
+  } catch (error) {
+    res.status(400).send("Something went wrong. Message:", error);
+  }
+});
 
 //GET with user id
 router.get("/api/recipes/:userId", async function (req, res) {
