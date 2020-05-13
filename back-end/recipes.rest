@@ -19,7 +19,7 @@ GET http://localhost:4000/api/recipes
 
 ###
 
-DELETE http://localhost:4000/api/recipes/5eb81b79d230551ec0e76318
+DELETE http://localhost:4000/api/recipes/
 
 ###
 

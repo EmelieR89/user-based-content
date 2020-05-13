@@ -18,14 +18,15 @@ body {
 
 .mainDiv {
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-areas: "recipeDiv recipeDiv recipeDiv recipeDiv";
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  grid-gap: 1rem;
 }
 
 .recipeDiv {
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 0.5rem;
   max-width: 30rem;
 }
@@ -78,4 +79,25 @@ textarea {
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 1rem;
+}
+
+.recipeBoxStyle {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userPage {
+  padding: 1rem;
+  display: grid;
+  grid-template-areas: "recipeBoxStyle recipeBoxStyle recipeBoxStyle recipeBoxStyle";
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  grid-gap: 1rem;
+}
+
+.deleteAndChangeButtons{
+  display: flex;
 }

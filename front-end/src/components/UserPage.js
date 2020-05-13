@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useContext } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function UserPage() {
   const { userData } = useContext(UserContext);
+
+  const history = useHistory();
 
   const [recipes, setRecipe] = useState([]);
   let [goToRecipeForm, setGoToRecipeForm] = useState(false);
@@ -26,17 +28,49 @@ export default function UserPage() {
       });
   }
 
+  function deleteRecipe(id) {
+    fetch("http://localhost:4000/api/recipes/" + id, {
+      method: "DELETE",
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log("deleted");
+        getRecipes();
+      }
+      if (response.status === 500) {
+        console.log("funkar inte");
+      }
+    });
+  }
+
+  function changeRecipe() {
+    history.push("/changerecipe");
+  }
+
   return (
     <div>
-      <button onClick={getRecipes}>Hämta alla dina recept</button>
+      <button onClick={getRecipes}>Hämta alla recept</button>
       <button onClick={redirectToRecipeForm}>Skapa nytt recept</button>
-      {recipes.map((x, i) => (
-        <div key={i}>
-          <h4>{x.title}</h4>
-          <ul>{x.ingredients}</ul>
-          <div>{x.howTo}</div>
-        </div>
-      ))}
+      <div className="userPage">
+        {recipes.map((x, i) => (
+          <div className="recipeBoxStyle" key={i}>
+            <h4>{x.title}</h4>
+            <ul>
+              <li>{x.ingredients}</li>
+            </ul>
+            <span>{x.howTo}</span>
+            <div className="deleteAndChangeButtons">
+              <button onClick={changeRecipe}>Ändra</button>
+              <button
+                onClick={() => {
+                  deleteRecipe(x._id);
+                }}
+              >
+                Radera
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

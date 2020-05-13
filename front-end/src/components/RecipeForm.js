@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./UserContext";
+import { useHistory } from "react-router-dom";
 
 export default function RecipeForm() {
+  const { userData } = useContext(UserContext);
+
   let [recipeTitle, setRecipeTitle] = useState([]);
   let [recipeIngredients, setIngredients] = useState([]);
   let [recipeHowTo, setHowTo] = useState([]);
-
-  const { userData } = useContext(UserContext);
+  const history = useHistory();
 
   function createRecipe() {
     console.log(userData);
@@ -23,10 +25,15 @@ export default function RecipeForm() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(recipe),
-    }).then((response) => {
-      alert("Receptet har lagts till");
     });
+    redirectToUserPage();
   }
+
+  function redirectToUserPage() {
+    history.push("/userpage");
+  }
+
+  function addIngredients() {}
 
   return (
     <form className="recipeform">
