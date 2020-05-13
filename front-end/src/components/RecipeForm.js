@@ -33,8 +33,6 @@ export default function RecipeForm() {
     history.push("/userpage");
   }
 
-  function addIngredients() {}
-
   return (
     <form className="recipeform">
       <input
