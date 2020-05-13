@@ -3,12 +3,6 @@ const RecipeModel = require("../models/recipeModel");
 
 const router = express.Router();
 
-// READ ALL
-// router.get("/api/recipes", async function (req, res) {
-//   const recipes = await RecipeModel.find().populate("createdBy");
-//   res.json(recipes);
-// });
-
 // GET all recipes
 router.get("/api/recipes", async function (req, res) {
   try {
@@ -20,14 +14,26 @@ router.get("/api/recipes", async function (req, res) {
 });
 
 // GET recipe with id
-router.get("/api/recipes/:recipeId", async function (req, res) {
-  const id = req.params.recipeId;
+// router.get("/api/recipes/:recipeId", async function (req, res) {
+//   const id = req.params.recipeId;
+//   try {
+//     const recipeIdDoc = await RecipeModel.findById(id);
+//     res.status(200).json(recipeIdDoc);
+//   } catch (error) {
+//     res.status(400).send("Something went wrong. Message:", error);
+//   }
+// });
+
+//GET with user id
+router.get("/api/recipes/:userId", async function (req, res) {
+  const userId = req.params.userId;
   try {
-    const recipeIdDoc = await RecipeModel.findById(id);
-    console.log(recipeIdDoc, "Här är vi");
-    res.status(200).json(recipeIdDoc);
-  } catch (error) {
-    res.status(400).send("Something went wrong. Message:", error);
+    const userRecipes = await RecipeModel.find({
+      createdBy: userId,
+    }).exec();
+    res.status(200).json(userRecipes);
+  } catch (err) {
+    console.log("Something went wrong");
   }
 });
 

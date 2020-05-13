@@ -7,18 +7,21 @@ import CreateUserPage from "./components/CreateUserPage";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import UserPage from "./components/UserPage";
 import RecipeForm from "./components/RecipeForm";
+import { UserDataProvider } from "./components/UserContext";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Switch>
-        <Route exact path="/" component={MainContent} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/createuser" component={CreateUserPage} />
-        <Route path="/userpage" component={UserPage} />
-        <Route path="/recipeform" component={RecipeForm} />
-      </Switch>
+      <UserDataProvider>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={MainContent} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/createuser" component={CreateUserPage} />
+          <Route path="/userpage" component={UserPage} />
+          <Route path="/recipeform" component={RecipeForm} />
+        </Switch>
+      </UserDataProvider>
     </div>
   );
 }
