@@ -3,7 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function LoginPage() {
-  const { userData, setName, setId } = useContext(UserContext);
+  const { setId } = useContext(UserContext);
 
   const [userName, setUserName] = useState([]);
   const [userPassword, setUserPassword] = useState([]);
