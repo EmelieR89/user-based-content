@@ -62,7 +62,7 @@ export default function UserPage() {
            <u>Du behöver: </u>
           <ul>{x.ingredients}</ul>
           <u>Tillvägagångssätt: </u>
-          <div>{x.howTo}</div>
+          <div className="howToDiv">{x.howTo}</div>
             <div className="deleteAndChangeButtons">
               <button  onClick={() => {changeRecipe(x._id)}}>Ändra</button>
               <button

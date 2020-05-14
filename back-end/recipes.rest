@@ -26,13 +26,10 @@ DELETE http://localhost:4000/api/recipes/5eb9524ec0376b47a4b3e1b0
 
 ###
 
-PUT  http://localhost:4000/api/recipes/5eb827c2ca149b1320cb2f48
+PUT  http://localhost:4000/api/recipes/5eb953b1c0376b47a4b3e1b1
 Content-Type: application/json
 
 {
-    "_id": "5eb827c2ca149b1320cb2f48",
     "title": "Grönt är skönt",
-    "content": "Denna smoothie innehåller mängder med antioxidanter och järn! Allt som man kan behöva i dessa tider. ",
-    "postDate": "12 juni",
-    "__v": 0
+    "content": "Denna smoothie innehåller mängder med antioxidanter och järn!"
 }

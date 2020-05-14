@@ -11,12 +11,12 @@ let userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  recipes: [
+/*   recipes: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Recipes",
     },
-  ],
+  ], */
 });
 
 module.exports = mongoose.model("Users", userSchema);

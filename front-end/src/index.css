@@ -8,7 +8,6 @@ body {
   background-color: #02c39a;
   font-family: "Poppins", sans-serif;
   color: #f0f3bd;
- 
 }
 
 #root .App {
@@ -17,20 +16,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*   background-color: #028090; Bara för att spara denna färgen
- */
+
 }
 
 .mainDiv {
   padding: 1rem;
   display: grid;
-  grid-template-areas: "recipeMainDiv recipeMainDiv";
   grid-template-rows: auto;
   grid-template-columns: auto;
+  grid-template-areas: "recipeMainDiv recipeMainDiv";
+  flex-wrap: wrap;
   grid-gap: 1rem;
 }
 
-.recipeDiv input{
+.recipeDiv input {
   display: flex;
   border: 1px solid black;
   border-radius: 5rem;
@@ -45,7 +44,7 @@ body {
   border: 2px solid black;
   padding: 0.5rem;
   margin: 0.5rem;
-  /* max-width: 30rem; */
+  max-width: 30rem;
 }
 
 header {
@@ -84,6 +83,9 @@ input:focus {
   padding: 0.5rem;
   border-radius: 1rem;
 }
+.howToDiv {
+  max-width: 3rem;
+}
 
 .recipeform {
   display: flex;
@@ -115,7 +117,7 @@ input:focus {
   border: 2px solid black;
   padding: 0.5rem;
   margin: 0.5rem;
-  /* max-width: 30rem; */
+  max-width: 30rem;
 }
 
 .stylethisdiv {
@@ -129,6 +131,8 @@ input:focus {
   min-width: 50rem;
   padding: 0;
   display: grid;
+  /* grid-template-columns: 15rem, 15rem;
+  grid-template-rows: 15rem, 15rem; */
   grid-template-areas: "recipeBoxStyle recipeBoxStyle";
   grid-template-rows: auto;
   grid-template-columns: auto;
