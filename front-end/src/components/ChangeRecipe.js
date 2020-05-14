@@ -17,13 +17,14 @@ export default function ChangeRecipe(props) {
       });
   }
 
+
   return (
     <div className="mainDiv">
       <div className="recipeDiv">
-        <input type="text" value={recipe.title}></input>
-        <h4>{recipe.title}</h4>
-        <p>{recipe.ingredients}</p>
-        <p>{recipe.howTo}</p>
+        <input type="text" defaultValue={recipe.title}></input>
+        <input type="text" defaultValue={recipe.ingredients}></input>
+        <textarea defaultValue={recipe.howTo}></textarea>
+        <button>Spara</button>
       </div>
     </div>
   );

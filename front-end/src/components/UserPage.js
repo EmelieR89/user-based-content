@@ -50,7 +50,7 @@ export default function UserPage() {
   }
 
   return (
-    <div>
+    <div className="stylethisdiv">
       <button onClick={getRecipes}>Hämta alla recept</button>
       <button onClick={redirectToRecipeForm}>Skapa nytt recept</button>
       <div className="userPage">
