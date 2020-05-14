@@ -52,17 +52,23 @@ router.post("/api/recipes", async function (req, res) {
 // PUT update recipe
 router.put("/api/recipes/:recipeId", async function (req, res, next) {
   const id = req.params.recipeId;
-  try {
-    const updatedRecipe = await RecipeModel.findByIdAndUpdate(id, req.body, {
+  console.log(id + "detta är id");
+  
+     await RecipeModel.findByIdAndUpdate(id, req.body /* title: req.body.title, ingredients: req.body.ingredients, howTo: req.body.howTo */, {
       useFindAndModify: false,
+    })
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        message: "recipe changed",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({
+        error: err,
+      });
     });
-    res.json({
-      oldVersion: updatedRecipe,
-      newVersion: req.body,
-    });
-  } catch (error) {
-    res.status(400).send("Something went wrong. Message:", error);
-  }
 });
 
 //DELETE recipe by id
