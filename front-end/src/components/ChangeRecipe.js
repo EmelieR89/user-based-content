@@ -63,8 +63,8 @@ export default function ChangeRecipe(props) {
   }
 
   return (
-    <div className="mainDiv">
-      <div className="recipeDiv">
+    <div className="changeRecipeForm">
+      <h2>Redigera receptet</h2>
         <input
           type="text"
           defaultValue={recipe.title}
@@ -87,6 +87,5 @@ export default function ChangeRecipe(props) {
           Spara
         </button>
       </div>
-    </div>
   );
 }
