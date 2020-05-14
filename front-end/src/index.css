@@ -28,7 +28,7 @@ body {
   grid-gap: 1rem;
 }
 
-.recipeDiv input{
+.recipeDiv input {
   display: flex;
   border: 1px solid black;
   border-radius: 5rem;
@@ -98,6 +98,7 @@ textarea {
 }
 
 .recipeBoxStyle {
+  grid-area: recipeBoxStyle;
   border: 2px solid black;
   display: flex;
   flex-direction: column;
@@ -115,6 +116,8 @@ textarea {
 .userPage {
   padding: 1rem;
   display: grid;
+  /* grid-template-columns: 15rem, 15rem;
+  grid-template-rows: 15rem, 15rem; */
   grid-template-areas: "recipeBoxStyle recipeBoxStyle";
   grid-gap: 1rem;
 }
