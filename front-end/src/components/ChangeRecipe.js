@@ -8,14 +8,16 @@ export default function ChangeRecipe(props) {
   const [recipeHowTo, setRecipeHowTo] = useState([]);
 
   const history = useHistory();
+
+  //Id for the recipe user wants to edit (passed from userpage)
   let recipeId = props.location.id;
 
+  // The recipe user want to change shown when the component render
   useEffect(() => {
     getRecipes();
   }, []);
 
   function getRecipes() {
-    console.log(recipeId + "här är id på sida två");
     fetch("http://localhost:4000/api/recipes/recipe/" + recipeId)
       .then((response) => response.json())
       .then((recipe) => {
@@ -23,27 +25,13 @@ export default function ChangeRecipe(props) {
       });
   }
 
+  // Runs when the user has edited the recipe. If not all inputdivs are changes, they keep their old value.
   function saveRecipe() {
-    console.log(recipeId + "här är id i saverecipe");
-    console.log(recipeTitle + "detta är recipetitle");
-    console.log(recipeHowTo + "detta är howto");
-
     const recipeUpdated = recipe;
-    if (recipeTitle.length <= 0) {
-      recipeUpdated.title = recipe.title;
-    } else {
-      recipeUpdated.title = recipeTitle;
-    }
-    if (recipeIngredients.length <= 0) {
-      recipeUpdated.ingredients = recipe.ingredients;
-    } else {
-      recipeUpdated.ingredients = recipeIngredients;
-    }
-    if (recipeHowTo.length <= 0) {
-      recipeUpdated.howTo = recipe.howTo;
-    } else {
-      recipeUpdated.howTo = recipeHowTo;
-    }
+    recipeUpdated.title = recipeTitle.length <= 0 ? recipe.title : recipeTitle;
+    recipeUpdated.ingredients =
+      recipeIngredients.length <= 0 ? recipe.ingredients : recipeIngredients;
+    recipeUpdated.howTo = recipeHowTo.length <= 0 ? recipe.howTo : recipeHowTo;
 
     fetch("http://localhost:4000/api/recipes/" + recipeId, {
       method: "PUT",
@@ -51,30 +39,39 @@ export default function ChangeRecipe(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(recipeUpdated),
-    }).then((response) => {
+    }).then(async (response) => {
       if (response.status === 200) {
-        alert("receptet har ändrats");
+        let messageResponse = await response.json();
+        alert(messageResponse.message);
         history.push("/userpage");
       }
       if (response.status === 400) {
-        console.log("funkar inte att ändra");
+        console.log(await response.json());
       }
     });
   }
 
   return (
-    <div className="changeRecipeForm">
-      <h2>Redigera receptet</h2>
+    <div>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        Logga ut
+      </button>
+      <div className="changeRecipeForm">
+        <h2>Redigera receptet</h2>
         <input
           type="text"
           defaultValue={recipe.title}
           onChange={(event) => setRecipeTitle(event.target.value)}
         ></input>
-        <input
+        <textarea
           type="text"
           defaultValue={recipe.ingredients}
           onChange={(event) => setRecipeIngredients(event.target.value)}
-        ></input>
+        ></textarea>
         <textarea
           defaultValue={recipe.howTo}
           onChange={(event) => setRecipeHowTo(event.target.value)}
@@ -87,5 +84,6 @@ export default function ChangeRecipe(props) {
           Spara
         </button>
       </div>
+    </div>
   );
 }

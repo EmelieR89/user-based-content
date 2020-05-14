@@ -9,22 +9,27 @@ router.get("/api/recipes", async function (req, res) {
     let recipes = await RecipeModel.find();
     res.status(200).json(recipes);
   } catch (error) {
-    res.status(400).send("Something went wrong. Message:", error);
+    res.status(400).json({
+      message: "could not find recipes",
+      error: error,
+    });
   }
 });
 
 router.get("/api/recipes/recipe/:recipeId", async function (req, res) {
   const id = req.params.recipeId;
-  console.log(id, "här är id i backend");
   try {
     const recipeWeEdit = await RecipeModel.findById(id);
     res.status(200).json(recipeWeEdit);
   } catch (error) {
-    res.status(400).send("Something went wrong. Message:"); //error);
+    res.status(400).json({
+      message: "Could not get recipe",
+      error: error,
+    });
   }
 });
 
-//GET with user id
+//GET recipes for one specific user.
 router.get("/api/recipes/:userId", async function (req, res) {
   const userId = req.params.userId;
   try {
@@ -33,7 +38,10 @@ router.get("/api/recipes/:userId", async function (req, res) {
     }).exec();
     res.status(200).json(userRecipes);
   } catch (err) {
-    console.log("Something went wrong");
+    res.status(400).json({
+      message: "recipe deleted",
+      error: error,
+    });
   }
 });
 
@@ -43,30 +51,31 @@ router.post("/api/recipes", async function (req, res) {
   try {
     const recipeDoc = await new RecipeModel(recipe);
     const savedRecipeDoc = await recipeDoc.save();
-    res.status(200).json(savedRecipeDoc); //send(JSON.stringify(savedRecipeDoc));
+    res.status(200).json(savedRecipeDoc);
   } catch (error) {
-    res.status(400).send("Something went wrong. Message:", error);
+    res.status(400).json({
+      message: "Recipe has not been created",
+      error: error,
+    });
   }
 });
 
 // PUT update recipe
 router.put("/api/recipes/:recipeId", async function (req, res, next) {
   const id = req.params.recipeId;
-  console.log(id + "detta är id");
-  
-     await RecipeModel.findByIdAndUpdate(id, req.body /* title: req.body.title, ingredients: req.body.ingredients, howTo: req.body.howTo */, {
-      useFindAndModify: false,
-    })
+  await RecipeModel.findByIdAndUpdate(id, req.body, {
+    useFindAndModify: false,
+  })
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "recipe changed",
+        message: "Recipe has been changed",
       });
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.log(error);
       res.status(400).json({
-        error: err,
+        error: error,
       });
     });
 });
@@ -78,7 +87,7 @@ router.delete("/api/recipes/:recipeId", async function (req, res, next) {
     .exec()
     .then((result) => {
       res.status(200).json({
-        message: "recipe deleted",
+        message: "Recipe has been deleted.",
       });
     })
     .catch((err) => {

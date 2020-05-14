@@ -4,7 +4,7 @@ import MainContent from "./components/MainContent.js";
 import Header from "./components/Header.js";
 import LoginPage from "./components/LoginPage";
 import CreateUserPage from "./components/CreateUserPage";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import UserPage from "./components/UserPage";
 import RecipeForm from "./components/RecipeForm";
 import { UserDataProvider } from "./components/UserContext";

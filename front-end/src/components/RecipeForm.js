@@ -8,11 +8,9 @@ export default function RecipeForm() {
   let [recipeTitle, setRecipeTitle] = useState([]);
   let [recipeIngredients, setIngredients] = useState([]);
   let [recipeHowTo, setHowTo] = useState([]);
-  let [currentIngredient, setcurrentIngredient] = useState([])
   const history = useHistory();
 
   function createRecipe() {
-    console.log(userData);
     let recipe = {
       title: recipeTitle,
       createdBy: userData.id,
@@ -27,48 +25,37 @@ export default function RecipeForm() {
       },
       body: JSON.stringify(recipe),
     });
-    redirectToUserPage();
-  }
-
-  function redirectToUserPage() {
+    alert("Recipe has been created");
     history.push("/userpage");
   }
 
-  function addIngredients(){
-    let ingredients = recipeIngredients
-    ingredients.push(currentIngredient)
-    setIngredients(ingredients)
-    console.log(recipeIngredients);
-    
-  }
-
   return (
-    <div className="recipeform">
-      <h2>Lägg till ett recept</h2>
-      <input
-        type="text"
-        placeholder="title"
-        onChange={(event) => setRecipeTitle(event.target.value)}
-      ></input>
-      <input
-        // value={currentIngredient}
-        type="text"
-        placeholder="ingredienser"
-        onChange={(event) => setcurrentIngredient(event.target.value)}
-      ></input>
-      {/* <button onClick={addIngredients}>Add ingredients</button>
-    <ul>
-      {
-        recipeIngredients.map((ingredient, i) => {
-          return <li key={i}>{ingredient}</li>
-        })
-      } 
-    </ul> */}
-      <textarea
-        placeholder="Hur"
-        onChange={(event) => setHowTo(event.target.value)}
-      ></textarea>
-      <button onClick={createRecipe}>Skapa recept</button>
+    <div>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        Logga ut
+      </button>
+      <div className="recipeform">
+        <h2>Lägg till ett recept</h2>
+        <input
+          type="text"
+          placeholder="title"
+          onChange={(event) => setRecipeTitle(event.target.value)}
+        ></input>
+        <textarea
+          type="text"
+          placeholder="ingredienser"
+          onChange={(event) => setIngredients(event.target.value)}
+        ></textarea>
+        <textarea
+          placeholder="Hur"
+          onChange={(event) => setHowTo(event.target.value)}
+        ></textarea>
+        <button onClick={createRecipe}>Skapa recept</button>
+      </div>
     </div>
   );
 }
