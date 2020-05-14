@@ -19,13 +19,13 @@ export default function ChangeRecipe(props) {
 
 
   return (
-    <div className="mainDiv">
-      <div className="recipeDiv">
+      <div className="changeRecipeForm">
+        <h2>Redigera ditt recept</h2>
         <input type="text" defaultValue={recipe.title}></input>
         <input type="text" defaultValue={recipe.ingredients}></input>
         <textarea defaultValue={recipe.howTo}></textarea>
         <button>Spara</button>
       </div>
-    </div>
+
   );
 }

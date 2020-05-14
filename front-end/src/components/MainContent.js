@@ -19,8 +19,10 @@ export default function MainContent() {
     <div className="mainDiv">
       {recipes.map((x, i) => (
         <div className="recipeMainDiv" key={i}>
-          <h4>{x.title}</h4>
+          <h3 style={{textAlign: "center"}}>{x.title}</h3>
+          <u>Du behöver: </u>
           <ul>{x.ingredients}</ul>
+          <u>Tillvägagångssätt: </u>
           <div>{x.howTo}</div>
         </div>
       ))}

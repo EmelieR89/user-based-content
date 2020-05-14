@@ -8,6 +8,7 @@ export default function RecipeForm() {
   let [recipeTitle, setRecipeTitle] = useState([]);
   let [recipeIngredients, setIngredients] = useState([]);
   let [recipeHowTo, setHowTo] = useState([]);
+  let [currentIngredient, setcurrentIngredient] = useState([])
   const history = useHistory();
 
   function createRecipe() {
@@ -33,25 +34,41 @@ export default function RecipeForm() {
     history.push("/userpage");
   }
 
+  function addIngredients(){
+    let ingredients = recipeIngredients
+    ingredients.push(currentIngredient)
+    setIngredients(ingredients)
+    console.log(recipeIngredients);
+    
+  }
+
   return (
-    <form className="recipeform">
+    <div className="recipeform">
+      <h2>Lägg till ett recept</h2>
       <input
         type="text"
         placeholder="title"
         onChange={(event) => setRecipeTitle(event.target.value)}
       ></input>
       <input
+        // value={currentIngredient}
         type="text"
         placeholder="ingredienser"
-        onChange={(event) => setIngredients(event.target.value)}
+        onChange={(event) => setcurrentIngredient(event.target.value)}
       ></input>
+      {/* <button onClick={addIngredients}>Add ingredients</button>
+    <ul>
+      {
+        recipeIngredients.map((ingredient, i) => {
+          return <li key={i}>{ingredient}</li>
+        })
+      } 
+    </ul> */}
       <textarea
-        rows="10"
-        columns="10"
         placeholder="Hur"
         onChange={(event) => setHowTo(event.target.value)}
       ></textarea>
       <button onClick={createRecipe}>Skapa recept</button>
-    </form>
+    </div>
   );
 }

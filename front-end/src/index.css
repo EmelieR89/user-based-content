@@ -8,10 +8,12 @@ body {
   background-color: #02c39a;
   font-family: "Poppins", sans-serif;
   color: #f0f3bd;
+ 
 }
 
 #root .App {
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +24,7 @@ body {
 .mainDiv {
   padding: 1rem;
   display: grid;
-  grid-template-areas: "recipeDiv recipeDiv";
+  grid-template-areas: "recipeMainDiv recipeMainDiv";
   grid-template-rows: auto;
   grid-template-columns: auto;
   grid-gap: 1rem;
@@ -43,7 +45,7 @@ body {
   border: 2px solid black;
   padding: 0.5rem;
   margin: 0.5rem;
-  max-width: 30rem;
+  /* max-width: 30rem; */
 }
 
 header {
@@ -85,24 +87,35 @@ input:focus {
 
 .recipeform {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
 }
 
-.recipeform input,
-textarea {
-  margin: 0.5rem;
+.recipeform input {
   padding: 0.5rem;
-  border-radius: 1rem;
+  border-radius: 5rem;
+  margin: 0.5rem;
+  width: 20rem;
+}
+.recipeform textarea {
+  width: 22rem;
+  height: 10rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+.recipeform button {
+  width: 10rem;
 }
 
 .recipeBoxStyle {
-  border: 2px solid black;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border: 2px solid black;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  /* max-width: 30rem; */
 }
 
 .stylethisdiv {
@@ -113,8 +126,40 @@ textarea {
 }
 
 .userPage {
-  padding: 1rem;
+  min-width: 50rem;
+  padding: 0;
   display: grid;
   grid-template-areas: "recipeBoxStyle recipeBoxStyle";
+  grid-template-rows: auto;
+  grid-template-columns: auto;
   grid-gap: 1rem;
+}
+
+.deleteAndChangeButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.changeRecipeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.changeRecipeForm input {
+  padding: 0.5rem;
+  border-radius: 5rem;
+  margin: 0.5rem;
+  width: 20rem;
+}
+
+.changeRecipeForm textarea {
+  width: 22rem;
+  height: 10rem;
+  border-radius: 1rem;
+}
+
+.changeRecipeForm button {
+  width: 10rem;
 }

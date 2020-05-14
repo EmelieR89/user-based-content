@@ -50,17 +50,19 @@ export default function UserPage() {
   }
 
   return (
+    
     <div className="stylethisdiv">
       <button onClick={getRecipes}>Hämta alla recept</button>
       <button onClick={redirectToRecipeForm}>Skapa nytt recept</button>
+    
       <div className="userPage">
         {recipes.map((x, i) => (
           <div className="recipeBoxStyle" key={i}>
-            <h4>{x.title}</h4>
-            <ul>
-              <li>{x.ingredients}</li>
-            </ul>
-            <span>{x.howTo}</span>
+           <h3 style={{textAlign: "center"}}>{x.title}</h3>
+           <u>Du behöver: </u>
+          <ul>{x.ingredients}</ul>
+          <u>Tillvägagångssätt: </u>
+          <div>{x.howTo}</div>
             <div className="deleteAndChangeButtons">
               <button  onClick={() => {changeRecipe(x._id)}}>Ändra</button>
               <button
@@ -74,6 +76,6 @@ export default function UserPage() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
   );
 }
