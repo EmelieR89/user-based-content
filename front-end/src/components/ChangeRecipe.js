@@ -11,7 +11,6 @@ export default function ChangeRecipe(props) {
 
   //Id for the recipe user wants to edit (passed from userpage)
   let recipeId = props.location.id;
-  console.log(recipeId + " detta är receptidt");
   
 
   // The recipe user want to change shown when the component render

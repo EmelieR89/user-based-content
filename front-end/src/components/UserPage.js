@@ -13,9 +13,7 @@ export default function UserPage() {
   // Users name, from loginpage
   const userName = userData.name;
 
-  function getRecipes() {
-    console.log(userData.id + "detta är userdataid");
-    
+  function getRecipes() {    
     fetch("http://localhost:4000/api/recipes/" + userData.id, {
     credentials: "include"})
      .then((response) => response.json())

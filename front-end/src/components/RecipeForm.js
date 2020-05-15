@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
-import { UserContext } from "./UserContext";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function RecipeForm() {
-  const { userData } = useContext(UserContext);
 
   let [recipeTitle, setRecipeTitle] = useState([]);
   let [recipeIngredients, setIngredients] = useState([]);

@@ -38,24 +38,9 @@ router.get("/api/recipes/:userId", async function (req, res) {
   try {
     const userRecipes = await RecipeModel.find({
       user: userId,
-    }).populate('user').exec();
-    
-    console.log(userRecipes[0])
-    // const recipe = {
-    //   _id: 'äöaslkdjhasgd',
-    //   title: String,
-    //   ingredients: String,
-    //   howTo: String,
-    //   user: {
-    //     _id: 'jahsbd8a7s6dfasdyvasd',
-    //     name: 'Emelie',
-    //   }
-    // }
-    
+    }).populate('user').exec();    
     // userRecipes.forEach((recipe) => delete recipe.user.password)
-    
-
-    res.status(200).json(userRecipes);
+     res.status(200).json(userRecipes);
   } catch (err) {
     res.status(400).json({
       message: "recipe deleted",
@@ -87,7 +72,6 @@ router.put("/api/recipes/:recipeId", requireLogin, async function (req, res) {
   await RecipeModel.findById(id)
     .exec()
     .then((recipe) => {
-      console.log(recipe, req.session.userId)
       if (!recipe) {
         res.status(404).json('Recipe does not exist')
       }
@@ -95,13 +79,11 @@ router.put("/api/recipes/:recipeId", requireLogin, async function (req, res) {
       if (recipe.user == req.session.userId) {
         // update recipe
         recipe = new RecipeModel(Object.assign(recipe, req.body))
-        console.log(recipe + " detta är det nya receptet");
         
         // save recipe
         recipe.save((err, recipe) => {
           if (err) {
-            console.log(err);
-            res.status(500).json({ error });
+            res.status(500).json({ err });
           } else {
             res.status(200).json({
               message: "Recipe has been changed",
@@ -114,7 +96,6 @@ router.put("/api/recipes/:recipeId", requireLogin, async function (req, res) {
       }
     })
     .catch((error) => {
-      console.log(error);
       res.status(400).json({
         error: error,
       });
@@ -127,7 +108,6 @@ router.delete("/api/recipes/:recipeId", requireLogin, async function (req, res) 
 
   try {
     const recipe = await RecipeModel.findById(id)
-    console.log(recipe, req.session.userId)
     if (!recipe) {
       res.status(404).json('Recipe does not exist')
     }
@@ -139,27 +119,8 @@ router.delete("/api/recipes/:recipeId", requireLogin, async function (req, res) 
       res.status(403).json('Cannot delete other users recipe')
     }
   } catch(error) {
-      console.log(error);
       res.status(500).json({ error });
   }
 });
-
-//DELETE recipe by id
-/* router.delete("/api/recipes/:recipeId", requireLogin, async function (req, res) {
-  const id = req.params.recipeId;
-  await RecipeModel.deleteOne({ _id: id })
-    .exec()
-    .then((result) => {
-      res.status(200).json({
-        message: "Recipe has been deleted.",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
-    });
-}); */
 
 module.exports = router;

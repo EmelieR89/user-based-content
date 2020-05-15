@@ -1,28 +1,5 @@
 [
   {
-      "_id" : ObjectId("5eb953b1c0376b47a4b3e1b1"),
-      "title" : "Grönt är skönt",
-      "ingredients" : "cskocksoc",
-      "howTo" : "ckscsdock",
-      "__v" : 0
-  },
-  {
-      "_id" : ObjectId("5ebbeb0e4f01e81e3443b6cf"),
-      "title" : "dcscsd",
-      "createdBy" : "5eb936961b68ce1190a934c9",
-      "ingredients" : "cdwew",
-      "howTo" : "cdwvew",
-      "__v" : 0
-  },
-  {
-      "_id" : ObjectId("5ebc3bf7024ec53cd0850d23"),
-      "title" : "bananchang",
-      "createdBy" : "5ebc3bbb024ec53cd0850d20",
-      "ingredients" : "banancasc",
-      "howTo" : "csaca",
-      "__v" : 0
-  },
-  {
       "_id" : ObjectId("5ebc457b024ec53cd0850d25"),
       "title" : "te",
       "createdBy" : "5ebc3bbb024ec53cd0850d20",
@@ -36,14 +13,6 @@
       "createdBy" : "5ebc3bbb024ec53cd0850d20",
       "ingredients" : "pengar",
       "howTo" : "köp",
-      "__v" : 0
-  },
-  {
-      "_id" : ObjectId("5ebc48a3024ec53cd0850d27"),
-      "title" : "cwcwe",
-      "createdBy" : "5ebc3bbb024ec53cd0850d20",
-      "ingredients" : "cdcw",
-      "howTo" : "cwdvwv",
       "__v" : 0
   },
   {
@@ -87,20 +56,6 @@
   {
       "_id" : ObjectId("5ebea3d5139e9936ac31d88d"),
       "title" : "Grönt är jätteskönt detta är nytt",
-      "ingredients" : "Spenat, grönkål, citron och banan",
-      "howTo" : "Mixa allt i en mixer!",
-      "__v" : 0
-  },
-  {
-      "_id" : ObjectId("5ebea4254dedd339a0f44e7e"),
-      "title" : "Grönt är jätteskönt detta är nytt",
-      "ingredients" : "Spenat, grönkål, citron och banan",
-      "howTo" : "Mixa allt i en mixer!",
-      "__v" : 0
-  },
-  {
-      "_id" : ObjectId("5ebea5d884a5003cb0b3527b"),
-      "title" : "Grönt är jätteskönt detta är ännu nyare",
       "ingredients" : "Spenat, grönkål, citron och banan",
       "howTo" : "Mixa allt i en mixer!",
       "__v" : 0
