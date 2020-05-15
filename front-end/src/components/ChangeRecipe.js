@@ -52,7 +52,8 @@ export default function ChangeRecipe(props) {
   }
 
   return (
-    <div>
+    <div className="recipeFormMainDiv">
+      <aside className="logOutButton">
       <button
         onClick={() => {
           history.push("/");
@@ -60,6 +61,7 @@ export default function ChangeRecipe(props) {
       >
         Logga ut
       </button>
+      </aside>
       <div className="changeRecipeForm">
         <h2>Redigera receptet</h2>
         <input

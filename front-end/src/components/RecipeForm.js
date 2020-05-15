@@ -30,14 +30,17 @@ export default function RecipeForm() {
   }
 
   return (
-    <div>
-      <button
+    <div className="recipeFormMainDiv">
+      <aside className="logOutButton">
+      <button 
         onClick={() => {
           history.push("/");
         }}
       >
         Logga ut
       </button>
+        
+      </aside>
       <div className="recipeform">
         <h2>Lägg till ett recept</h2>
         <input

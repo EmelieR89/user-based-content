@@ -70,17 +70,34 @@ input:focus {
   outline: none;
 }
 
+.logOutButton {
+  position:fixed;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.loginAndCreateUser {
+
+}
+
 .loginDiv {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 2rem;
+  margin-top: 3rem;
 }
 
 .loginDiv input {
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 1rem;
+}
+
+.recipeFormMainDiv {
+  height: 100vh;
+  width: 100vw;
 }
 
 .recipeform,
@@ -121,6 +138,10 @@ input:focus {
   margin: 0.5rem;
   max-width: 30rem;
   overflow-wrap: break-word;
+}
+
+.App-header h1 {
+  cursor: pointer;
 }
 
 .stylethisdiv {
