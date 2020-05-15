@@ -7,6 +7,7 @@ export default function LoginPage() {
 
   const [userName, setUserName] = useState([]);
   const [userPassword, setUserPassword] = useState([]);
+  
   const history = useHistory();
 
   function redirectToUserPage() {

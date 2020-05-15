@@ -25,7 +25,7 @@ export default function ChangeRecipe(props) {
       });
   }
 
-  // Runs when the user has edited the recipe. If not all inputdivs are changes, they keep their old value.
+  // Runs when the user has edited the recipe. If not all input divs are changes, they keep their old value.
   function saveRecipe() {
     const recipeUpdated = recipe;
     recipeUpdated.title = recipeTitle.length <= 0 ? recipe.title : recipeTitle;
@@ -52,7 +52,8 @@ export default function ChangeRecipe(props) {
   }
 
   return (
-    <div>
+    <div className="recipeFormMainDiv">
+      <aside className="logOutButton">
       <button
         onClick={() => {
           history.push("/");
@@ -60,6 +61,7 @@ export default function ChangeRecipe(props) {
       >
         Logga ut
       </button>
+      </aside>
       <div className="changeRecipeForm">
         <h2>Redigera receptet</h2>
         <input

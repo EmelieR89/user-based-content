@@ -16,6 +16,7 @@ router.get("/api/recipes", async function (req, res) {
   }
 });
 
+// GET specific recipe by Id
 router.get("/api/recipes/recipe/:recipeId", async function (req, res) {
   const id = req.params.recipeId;
   try {
@@ -61,7 +62,7 @@ router.post("/api/recipes", async function (req, res) {
 });
 
 // PUT update recipe
-router.put("/api/recipes/:recipeId", async function (req, res, next) {
+router.put("/api/recipes/:recipeId", async function (req, res) {
   const id = req.params.recipeId;
   await RecipeModel.findByIdAndUpdate(id, req.body, {
     useFindAndModify: false,
@@ -81,7 +82,7 @@ router.put("/api/recipes/:recipeId", async function (req, res, next) {
 });
 
 //DELETE recipe by id
-router.delete("/api/recipes/:recipeId", async function (req, res, next) {
+router.delete("/api/recipes/:recipeId", async function (req, res) {
   const id = req.params.recipeId;
   await RecipeModel.deleteOne({ _id: id })
     .exec()

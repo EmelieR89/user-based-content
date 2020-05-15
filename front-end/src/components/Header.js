@@ -9,7 +9,7 @@ export default function Header() {
       <h1 onClick={() => history.push("/")} style={{ margin: "2rem" }}>
         HerbaScript
       </h1>
-      <div className="loginDiv">
+      <div className="loginAndCreateUser">
         <button onClick={() => history.push("/login")}>Login</button>
         <button onClick={() => history.push("/createuser")}>
           Ny användare
