@@ -3,17 +3,14 @@ import { useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function LoginPage() {
-  const { setId } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const [userName, setUserName] = useState([]);
   const [userPassword, setUserPassword] = useState([]);
   const history = useHistory();
 
   function redirectToUserPage() {
-    history.push({
-      pathname: "/userpage",
-      name: userName,
-    });
+    history.push("/userpage");
   }
 
   function userAuthorization() {
@@ -31,7 +28,7 @@ export default function LoginPage() {
     }).then(async (response) => {
       if (response.status === 200) {
         let dataFromBackend = await response.json();
-        setId(dataFromBackend.userId);
+        setUser(dataFromBackend);
         redirectToUserPage();
       }
       if (response.status === 401) {

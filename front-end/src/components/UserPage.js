@@ -10,7 +10,7 @@ export default function UserPage(props) {
   const history = useHistory();
 
   // Users name, from loginpage
-  const userName = props.location.name;
+  const userName = userData.name;
 
   function getRecipes() {
     fetch("http://localhost:4000/api/recipes/" + userData.id)
@@ -63,24 +63,24 @@ export default function UserPage(props) {
         </button>
 
         <div className="userPage">
-          {recipes.map((x, i) => (
+          {recipes.map((recipe, i) => (
             <div className="recipeBoxStyle" key={i}>
-              <h3 style={{ textAlign: "center" }}>{x.title}</h3>
+              <h3 style={{ textAlign: "center" }}>{recipe.title}</h3>
               <u>Du behöver: </u>
-              <p>{x.ingredients}</p>
+              <p>{recipe.ingredients}</p>
               <u>Tillvägagångssätt: </u>
-              <div className="howToDiv">{x.howTo}</div>
+              <div className="howToDiv">{recipe.howTo}</div>
               <div className="deleteAndChangeButtons">
                 <button
                   onClick={() => {
-                    changeRecipe(x._id);
+                    changeRecipe(recipe._id);
                   }}
                 >
                   Ändra
                 </button>
                 <button
                   onClick={() => {
-                    deleteRecipe(x._id);
+                    deleteRecipe(recipe._id);
                   }}
                 >
                   Radera
