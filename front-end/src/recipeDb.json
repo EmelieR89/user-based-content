@@ -1,0 +1,63 @@
+[
+  {
+      "_id" : ObjectId("5ebc457b024ec53cd0850d25"),
+      "title" : "te",
+      "createdBy" : "5ebc3bbb024ec53cd0850d20",
+      "ingredients" : "te",
+      "howTo" : "värm",
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebc45e2024ec53cd0850d26"),
+      "title" : "efterätt",
+      "createdBy" : "5ebc3bbb024ec53cd0850d20",
+      "ingredients" : "pengar",
+      "howTo" : "köp",
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebc51ce024ec53cd0850d28"),
+      "title" : "äpple",
+      "createdBy" : "5ebc3bbb024ec53cd0850d20",
+      "ingredients" : "ett helt äpple",
+      "howTo" : "skala och ät",
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebe82efe8552c43002c0df8"),
+      "title" : "Gott med grönt",
+      "ingredients" : "5 veganägg och en banancdcdw",
+      "howTo" : "Denna smoothie innehåller mängder med antioxidanter och järn! Allt som man kan behöva i dessa tider. ",
+      "user" : ObjectId("5ebc3bbb024ec53cd0850d20"),
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebe86f637273b2c5c675ec9"),
+      "title" : "Grönt är skönt",
+      "ingredients" : "Spenat, grönkål, citron och banan",
+      "howTo" : "Mixa allt i en mixer!",
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebe95b9ecabcd3f08b4c492"),
+      "title" : "Grönt är skönt",
+      "ingredients" : "Spenat, grönkål, citron och banan",
+      "howTo" : "Mixa allt i en mixer!",
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebea323a431ab430049b812"),
+      "title" : "hejhej",
+      "ingredients" : "öl och öl",
+      "howTo" : "drick massoe av öl",
+      "user" : ObjectId("5ebc3bbb024ec53cd0850d20"),
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebea3d5139e9936ac31d88d"),
+      "title" : "Grönt är jätteskönt detta är nytt",
+      "ingredients" : "Spenat, grönkål, citron och banan",
+      "howTo" : "Mixa allt i en mixer!",
+      "__v" : 0
+  }
+]

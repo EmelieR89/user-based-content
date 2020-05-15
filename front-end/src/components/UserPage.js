@@ -13,17 +13,20 @@ export default function UserPage() {
   // Users name, from loginpage
   const userName = userData.name;
 
-  function getRecipes() {
-    fetch("http://localhost:4000/api/recipes/" + userData.id)
-      .then((response) => response.json())
+  function getRecipes() {    
+    fetch("http://localhost:4000/api/recipes/" + userData.id, {
+    credentials: "include"})
+     .then((response) => response.json())
       .then((recipes) => {
+        // sätt 404 här response.status > 300 
         setRecipe(recipes);
-      });
+      })
   }
 
   function deleteRecipe(id) {
     fetch("http://localhost:4000/api/recipes/" + id, {
       method: "DELETE",
+      credentials: "include",
     }).then((response) => {
       if (response.status === 200) {
         console.log("deleted");

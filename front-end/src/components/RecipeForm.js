@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
-import { UserContext } from "./UserContext";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function RecipeForm() {
-  const { userData } = useContext(UserContext);
 
   let [recipeTitle, setRecipeTitle] = useState([]);
   let [recipeIngredients, setIngredients] = useState([]);
@@ -14,7 +12,6 @@ export default function RecipeForm() {
   function createRecipe() {
     let recipe = {
       title: recipeTitle,
-      createdBy: userData.id,
       ingredients: recipeIngredients,
       howTo: recipeHowTo,
     };
@@ -24,6 +21,7 @@ export default function RecipeForm() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(recipe),
     });
     alert("Recipe has been created");

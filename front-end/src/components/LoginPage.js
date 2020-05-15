@@ -25,6 +25,7 @@ export default function LoginPage() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(user),
     }).then(async (response) => {
       if (response.status === 200) {
