@@ -5,6 +5,10 @@ let recipeSchema = mongoose.Schema({
   createdBy: String,
   ingredients: String,
   howTo: String,
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "users"
+  }
 });
 
-module.exports = mongoose.model("Recipes", recipeSchema);
+module.exports = mongoose.model("recipes", recipeSchema);

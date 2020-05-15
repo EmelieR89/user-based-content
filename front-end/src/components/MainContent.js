@@ -8,7 +8,8 @@ export default function MainContent() {
   }, []);
 
   function getRecipes() {
-    fetch("http://localhost:4000/api/recipes")
+    fetch("http://localhost:4000/api/recipes", {
+      credentials: "include" })
       .then((response) => response.json())
       .then((recipes) => {
         setRecipe(recipes);

@@ -14,7 +14,6 @@ export default function RecipeForm() {
   function createRecipe() {
     let recipe = {
       title: recipeTitle,
-      createdBy: userData.id,
       ingredients: recipeIngredients,
       howTo: recipeHowTo,
     };
@@ -24,6 +23,7 @@ export default function RecipeForm() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(recipe),
     });
     alert("Recipe has been created");

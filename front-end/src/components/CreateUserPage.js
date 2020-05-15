@@ -18,6 +18,7 @@ export default function CreateUser() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(newUser),
     }).then(async (response) => {
       if (response.status === 409) {

@@ -1,0 +1,15 @@
+[
+  {
+      "_id" : ObjectId("5eb936961b68ce1190a934c9"),
+      "name" : "Elin10",
+      "password" : "$2b$10$M7G22UB.D.OvsPfKF/9xheJGG5.XfRx3rvU7t.chaLoNAOyAebKP6",
+      "__v" : 0
+  },
+  {
+      "_id" : ObjectId("5ebc3bbb024ec53cd0850d20"),
+      "recipes" : [],
+      "name" : "isa",
+      "password" : "$2b$10$lOAugy2qNadudvSF4musAeWYGHIetNuEDyV263eSe3f./geQdC1Y6",
+      "__v" : 0
+  }
+]
