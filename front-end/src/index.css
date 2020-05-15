@@ -71,13 +71,9 @@ input:focus {
 }
 
 .logOutButton {
-  position:fixed;
-    display:flex;
-    flex-wrap:wrap;
-}
-
-.loginAndCreateUser {
-  
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .loginDiv {
