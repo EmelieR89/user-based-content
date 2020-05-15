@@ -2,18 +2,17 @@ import React, { useState } from "react";
 
 export const UserContext = React.createContext({
   userData: {},
-  setName: () => {},
-  setId: () => {},
+  setUser: () => {},
 });
 
 export const UserDataProvider = (props) => {
   const [userData, setUserData] = useState("");
 
-  const setName = (name) => setUserData({ ...userData, name });
-  const setId = (id) => setUserData({ ...userData, id });
+  const setUser = (user) =>
+    setUserData({ name: user.userName, id: user.userId });
 
   return (
-    <UserContext.Provider value={{ userData, setName, setId }}>
+    <UserContext.Provider value={{ userData, setUser }}>
       {props.children}
     </UserContext.Provider>
   );
