@@ -17,12 +17,11 @@ router.get("/api/users", async function (req, res) {
 });
 
 // POST signup
-router.post("/api/users/signup", async (req, res, next) => {
+router.post("/api/users/signup", async (req, res) => {
   await UserModel.find({ name: req.body.name })
     .exec()
     .then((user) => {
       if (user.length >= 1) {
-        console.log("user already exist");
         return res.status(409).json({
           message: "name already exists",
         });
@@ -41,13 +40,11 @@ router.post("/api/users/signup", async (req, res, next) => {
             await user
               .save()
               .then((result) => {
-                console.log(result);
                 res.status(201).json({
                   message: "User created",
                 });
               })
               .catch((err) => {
-                console.log(err);
                 res.status(500).json({
                   message: "Could not create user",
                   error: err,
@@ -59,8 +56,8 @@ router.post("/api/users/signup", async (req, res, next) => {
     });
 });
 
-// POST sign in
-router.post("/api/users/login", async (req, res, next) => {
+// POST Login
+router.post("/api/users/login", async (req, res) => {
   await UserModel.find({ name: req.body.name })
     .exec()
     .then((user) => {
@@ -94,8 +91,8 @@ router.post("/api/users/login", async (req, res, next) => {
     });
 });
 
-// Delete user
-router.delete("/api/users/:userId", async function (req, res, next) {
+// DELETE user
+router.delete("/api/users/:userId", async function (req, res) {
   const id = req.params.userId;
   await UserModel.deleteOne({ _id: id })
     .exec()

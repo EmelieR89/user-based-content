@@ -1,35 +1,40 @@
+// Get all recipes
+GET http://localhost:4000/api/recipes
 
+###
+
+// Get method for changing a specific recipe
 GET http://localhost:4000/api/recipes/recipe/5ebc1a3672b2933fe8bbf80b
 
 ###
+// Get all recipes from a specific user
 GET http://localhost:4000/api/recipes/5eb81b79d230551ec0e76318
 
 ###
-
+// Add a recipe
 POST http://localhost:4000/api/recipes
 Content-Type: application/json
 
 {
     "title": "Gott med grönt",
     "ingredients": "5 veganägg och en banan",
-    "howTo": "Denna smoothie innehåller mängder med antioxidanter och järn! Allt som man kan behöva i dessa tider. ",
-    "postDate": "5 juni"
+    "howTo": "Denna smoothie innehåller mängder med antioxidanter och järn! Allt som man kan behöva i dessa tider. "
 }
 
 ###
-
-GET http://localhost:4000/api/recipes
-
-###
-
-DELETE http://localhost:4000/api/recipes/5eb9524ec0376b47a4b3e1b0
-
-###
-
+// Change a specific recipe
 PUT  http://localhost:4000/api/recipes/5eb953b1c0376b47a4b3e1b1
 Content-Type: application/json
 
 {
     "title": "Grönt är skönt",
-    "content": "Denna smoothie innehåller mängder med antioxidanter och järn!"
+    "ingredients": "Spenat, grönkål, citron och banan",
+    "howTo": "Mixa allt i en mixer!"
 }
+
+###
+
+// Delete a specific recipe 
+DELETE http://localhost:4000/api/recipes/5eb9524ec0376b47a4b3e1b0
+
+###

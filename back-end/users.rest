@@ -1,4 +1,13 @@
+// Get all users
+GET http://localhost:4000/api/users
 
+###
+
+// Get specific user
+GET http://localhost:4000/api/users/5eb5179e7e97681e0c2f3f38
+
+###
+// Create new user
 POST http://localhost:4000/api/users/signup
 Content-Type: application/json
 
@@ -8,7 +17,7 @@ Content-Type: application/json
 }
 
 ###
-
+// Login existing user
 POST http://localhost:4000/api/users/login
 Content-Type: application/json
 
@@ -19,25 +28,5 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:4000/api/users
-
-###
-
-GET http://localhost:4000/api/users/5eb5179e7e97681e0c2f3f38
-
-###
-
-POST http://localhost:4000/api/users
-Content-Type: application/json
-
-{
-    "name": "Emelie",
-    "password": "Hej"
-}
-
-###
-
+// Delete an existing user
 DELETE http://localhost:4000/api/users/5eb5179e7e97681e0c2f3f38
-
-
-###

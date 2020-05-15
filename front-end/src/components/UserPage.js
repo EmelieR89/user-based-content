@@ -3,8 +3,9 @@ import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
-export default function UserPage(props) {
+export default function UserPage() {
   const { userData } = useContext(UserContext);
+
   const [recipes, setRecipe] = useState([]);
 
   const history = useHistory();
@@ -34,7 +35,7 @@ export default function UserPage(props) {
     });
   }
 
-  //Changes to changerecipe and the ID of the recipe user wants to edit.
+  // Redirects to changerecipe with the Id of the recipe the user wants to edit.
   function changeRecipe(id) {
     history.push({
       pathname: "/changerecipe",
@@ -44,7 +45,7 @@ export default function UserPage(props) {
 
   return (
     <div>
-      <div className="stylethisdiv">
+      <div className="styleUserPage">
         <h2>Välkommen {userName}!</h2>
         <button
           onClick={() => {

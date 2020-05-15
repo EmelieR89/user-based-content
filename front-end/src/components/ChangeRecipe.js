@@ -25,7 +25,7 @@ export default function ChangeRecipe(props) {
       });
   }
 
-  // Runs when the user has edited the recipe. If not all inputdivs are changes, they keep their old value.
+  // Runs when the user has edited the recipe. If not all input divs are changes, they keep their old value.
   function saveRecipe() {
     const recipeUpdated = recipe;
     recipeUpdated.title = recipeTitle.length <= 0 ? recipe.title : recipeTitle;

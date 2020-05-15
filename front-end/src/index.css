@@ -77,7 +77,7 @@ input:focus {
 }
 
 .loginAndCreateUser {
-
+  
 }
 
 .loginDiv {
@@ -144,7 +144,7 @@ input:focus {
   cursor: pointer;
 }
 
-.stylethisdiv {
+.styleUserPage {
   display: flex;
   flex-direction: column;
   justify-content: center;

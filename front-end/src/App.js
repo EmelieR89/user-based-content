@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import MainContent from "./components/MainContent.js";
 import Header from "./components/Header.js";
 import LoginPage from "./components/LoginPage";
