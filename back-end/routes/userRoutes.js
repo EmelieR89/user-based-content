@@ -10,50 +10,19 @@ router.get("/api/users", async function (req, res) {
     let users = await UserModel.find();
     res.status(200).json(users);
   } catch (error) {
-    res.status(400).send("Something went wrong. Message:", error);
+    res.status(400).json({
+      message: "Could not get user",
+    });
   }
 });
 
-// GET user with id
-// router.get("/api/users/:userId", async function (req, res) {
-//   const id = req.params.userId;
-//   console.log("användar id : ", id);
-//   try {
-//     const userIdDoc = await UserModel.findById(id)
-//       .populate("recipes")
-//       .exec(function (err, user) {
-//         if (err) {
-//           console.log("FAIL:", err);
-//         }
-//         console.log("undefined?", user);
-//         return user;
-//       });
-//     console.log("användare med recept : ",  userIdDoc);
-//     res.status(200).json( userIdDoc);
-//   } catch (error) {
-//     res.status(400).send("Something went wrong. Message:");
-//   }
-// });
-
-// //DELETE user by id
-// router.delete("/api/users/:userId", async function (req, res, next) {
-//   const id = req.params.userId;
-//   try {
-//     const res = await UserModel.findByIdAndDelete(id);
-//     res.status(200).send("Has been deleted");
-//   } catch (error) {
-//     res.status(400).send(error);
-//   }
-// });
-
 // POST signup
 router.post("/api/users/signup", async (req, res, next) => {
-  console.log("nu är vi i signup");
-  await UserModel.find({ name: req.body.name })  
+  await UserModel.find({ name: req.body.name })
     .exec()
     .then((user) => {
       if (user.length >= 1) {
-        console.log("användaren fanns");
+        console.log("user already exist");
         return res.status(409).json({
           message: "name already exists",
         });
@@ -64,8 +33,6 @@ router.post("/api/users/signup", async (req, res, next) => {
               error: err,
             });
           } else {
-            console.log("nu skapas en ny användare");
-            
             const user = new UserModel({
               _id: new mongoose.Types.ObjectId(),
               name: req.body.name,
@@ -75,13 +42,14 @@ router.post("/api/users/signup", async (req, res, next) => {
               .save()
               .then((result) => {
                 console.log(result);
-                res.status(201).json({  
+                res.status(201).json({
                   message: "User created",
                 });
               })
               .catch((err) => {
                 console.log(err);
                 res.status(500).json({
+                  message: "Could not create user",
                   error: err,
                 });
               });
@@ -93,8 +61,6 @@ router.post("/api/users/signup", async (req, res, next) => {
 
 // POST sign in
 router.post("/api/users/login", async (req, res, next) => {
-  // console.log(req.body);
-
   await UserModel.find({ name: req.body.name })
     .exec()
     .then((user) => {
@@ -110,7 +76,6 @@ router.post("/api/users/login", async (req, res, next) => {
           });
         }
         if (result) {
-          // console.log(user, "Här är result");
           return res.status(200).json({
             message: "Auth successful",
             userId: user[0]._id,
@@ -121,10 +86,9 @@ router.post("/api/users/login", async (req, res, next) => {
         });
       });
     })
-    .catch((err) => {
-      // console.log(err);
+    .catch((error) => {
       res.status(500).json({
-        error: err,
+        error: error,
       });
     });
 });
@@ -139,10 +103,9 @@ router.delete("/api/users/:userId", async function (req, res, next) {
         message: "user deleted",
       });
     })
-    .catch((err) => {
-      // console.log(err);
+    .catch((error) => {
       res.status(500).json({
-        error: err,
+        error: error,
       });
     });
 });

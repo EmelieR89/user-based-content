@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function LoginPage() {
@@ -10,12 +10,13 @@ export default function LoginPage() {
   const history = useHistory();
 
   function redirectToUserPage() {
-    history.push("/userpage");
+    history.push({
+      pathname: "/userpage",
+      name: userName,
+    });
   }
 
   function userAuthorization() {
-    console.log(userName, userPassword + "namn och lösen");
-
     let user = {
       name: userName,
       password: userPassword,
@@ -30,13 +31,12 @@ export default function LoginPage() {
     }).then(async (response) => {
       if (response.status === 200) {
         let dataFromBackend = await response.json();
-        console.log(dataFromBackend);
         setId(dataFromBackend.userId);
         redirectToUserPage();
       }
-
       if (response.status === 401) {
-        console.log("du får inte vara med");
+        let messageResponse = await response.json();
+        alert(messageResponse.message);
       }
     });
   }

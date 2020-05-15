@@ -17,15 +17,15 @@ export default function MainContent() {
 
   return (
     <div className="mainDiv">
-      {recipes.map((x, i) => (
+      {recipes.map((recipe, i) => (
         <div className="recipeMainDiv" key={i}>
-          <h3 style={{textAlign: "center"}}>{x.title}</h3>
+          <h3 style={{ textAlign: "center" }}>{recipe.title}</h3>
           <u>Du behöver: </u>
-          <ul>{x.ingredients}</ul>
+          <p>{recipe.ingredients}</p>
           <u>Tillvägagångssätt: </u>
-          <div>{x.howTo}</div>
+          <div>{recipe.howTo}</div>
         </div>
       ))}
     </div>
-  )
+  );
 }

@@ -16,7 +16,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .mainDiv {
@@ -25,7 +24,6 @@ body {
   grid-template-rows: auto;
   grid-template-columns: auto;
   grid-template-areas: "recipeMainDiv recipeMainDiv";
-  flex-wrap: wrap;
   grid-gap: 1rem;
 }
 
@@ -45,6 +43,7 @@ body {
   padding: 0.5rem;
   margin: 0.5rem;
   max-width: 30rem;
+  overflow-wrap: break-word;
 }
 
 header {
@@ -52,9 +51,8 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 12vh;
-  width: 100vw;
+  width: 100%;
   background-color: #00a896;
-  padding: 1rem;
 }
 
 button {
@@ -76,6 +74,7 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 2rem;
 }
 
 .loginDiv input {
@@ -83,31 +82,34 @@ input:focus {
   padding: 0.5rem;
   border-radius: 1rem;
 }
-.howToDiv {
-  max-width: 3rem;
-}
 
-.recipeform {
+.recipeform,
+.changeRecipeForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2%;
 }
 
-.recipeform input {
+.recipeform input,
+.changeRecipeForm input {
   padding: 0.5rem;
   border-radius: 5rem;
   margin: 0.5rem;
   width: 20rem;
 }
-.recipeform textarea {
+
+.recipeform textarea,
+.changeRecipeForm textarea {
   width: 22rem;
   height: 10rem;
-  margin: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
 }
 
-.recipeform button {
+.recipeform button,
+.changeRecipeForm button {
   width: 10rem;
 }
 
@@ -118,6 +120,7 @@ input:focus {
   padding: 0.5rem;
   margin: 0.5rem;
   max-width: 30rem;
+  overflow-wrap: break-word;
 }
 
 .stylethisdiv {
@@ -131,8 +134,6 @@ input:focus {
   min-width: 50rem;
   padding: 0;
   display: grid;
-  /* grid-template-columns: 15rem, 15rem;
-  grid-template-rows: 15rem, 15rem; */
   grid-template-areas: "recipeBoxStyle recipeBoxStyle";
   grid-template-rows: auto;
   grid-template-columns: auto;
@@ -142,28 +143,4 @@ input:focus {
 .deleteAndChangeButtons {
   display: flex;
   justify-content: center;
-}
-
-.changeRecipeForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2%;
-}
-
-.changeRecipeForm input {
-  padding: 0.5rem;
-  border-radius: 5rem;
-  margin: 0.5rem;
-  width: 20rem;
-}
-
-.changeRecipeForm textarea {
-  width: 22rem;
-  height: 10rem;
-  border-radius: 1rem;
-}
-
-.changeRecipeForm button {
-  width: 10rem;
 }

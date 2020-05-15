@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function CreateUser() {
   const [userName, setUserName] = useState();
   const [userPassword, setUserPassword] = useState();
+
+  const history = useHistory();
 
   function createNewUser() {
     let newUser = {
@@ -16,15 +19,19 @@ export default function CreateUser() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
-    }).then( (response) => {
+    }).then(async (response) => {
       if (response.status === 409) {
-        alert("Användarnamnet är upptaget. Försök igen.");
+        let messageResponse = await response.json();
+        alert(messageResponse.message);
       }
       if (response.status === 201) {
-        alert("Användaren har skapats");
+        let messageResponse = await response.json();
+        alert(messageResponse.message);
+        history.push("/login");
       }
       if (response.status === 500) {
-        alert("Något gick fel. Försök igen. ");
+        let messageResponse = await response.json();
+        alert(messageResponse.message);
       }
     });
   }
