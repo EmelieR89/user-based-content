@@ -91,21 +91,21 @@ router.post("/api/users/login", async (req, res) => {
     });
 });
 
-// DELETE user
-router.delete("/api/users/:userId", async function (req, res) {
-  const id = req.params.userId;
-  await UserModel.deleteOne({ _id: id })
-    .exec()
-    .then((result) => {
-      res.status(200).json({
-        message: "user deleted",
-      });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        error: error,
-      });
-    });
-});
+// // DELETE user
+// router.delete("/api/users/:userId", async function (req, res) {
+//   const id = req.params.userId;
+//   await UserModel.deleteOne({ _id: id })
+//     .exec()
+//     .then((result) => {
+//       res.status(200).json({
+//         message: "user deleted",
+//       });
+//     })
+//     .catch((error) => {
+//       res.status(500).json({
+//         error: error,
+//       });
+//     });
+// });
 
 module.exports = router;
